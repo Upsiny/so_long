@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_map.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hguillau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/12 09:01:12 by hguillau          #+#    #+#             */
+/*   Updated: 2022/08/19 20:17:57 by hguillau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+char	*ft_get_map(int fd)
+{
+	char	*map;
+	char	*tmp;
+
+	map = ft_strdup("");
+	tmp = get_next_line(fd);
+	while (tmp != NULL)
+	{
+		dprintf(2, "tmp : %s\nlast tmp char : %c (%d)\n",tmp, tmp[ft_strlen(tmp)-1], tmp[ft_strlen(tmp)-1]);//debug
+		map = ft_strjoin(map, tmp);
+		dprintf(2, "map now end with %c (%d)\n", map[ft_strlen(map) -1], 
+			(int)map[ft_strlen(map)-1]);//debug
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	free(tmp);
+	dprintf(2, "map is \n%sof len %lu\n", map, ft_strlen(map));//debug
+	tmp = map;
+	map = ft_calloc(1, ft_strlen(map) + 10);
+	ft_strlcpy(map, tmp, ft_strlen(tmp));
+	dprintf(2, "last char is %c (%d)\n", map[ft_strlen(map) -1], 
+			(int)map[ft_strlen(map)-1]);//debug
+	if (map[ft_strlen(map) - 1] == '\n')
+		exit(printf("\033[4;31mVS CODE DETECTED\nplease go fuck yourself with the norminette\033[0m\nps : how do you like newlineless text now asshole?"));
+	return (map);
+}
