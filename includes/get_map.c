@@ -6,7 +6,7 @@
 /*   By: hguillau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:01:12 by hguillau          #+#    #+#             */
-/*   Updated: 2022/08/19 20:27:46 by hguillau         ###   ########.fr       */
+/*   Updated: 2022/08/19 20:45:59 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*ft_get_map(int fd)
 		map = ft_strjoin(map, tmp);
 		free(tmp);
 		tmp = get_next_line(fd);
+		if (tmp && tmp[ft_strlenn(tmp) - 1] != '\n')
+			tmp = ft_strjoin(tmp, "\n");
 	}
 	free(tmp);
 	return (map);
