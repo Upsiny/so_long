@@ -6,7 +6,7 @@
 /*   By: hguillau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:40:12 by hguillau          #+#    #+#             */
-/*   Updated: 2022/08/19 20:28:14 by hguillau         ###   ########.fr       */
+/*   Updated: 2022/08/20 15:29:56 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,9 @@ int	main(int ac, char **av)
 	(void) ac;
 	fd = open(av[1], O_RDONLY);
 	map = ft_get_map(fd);
-	dprintf(2, "after reading, map is\n%s\n", map);//debug
 	ft_anim_set(&mlx);
 	recup_donnee(map, &mlx);
 	ft_secu(map, av[1]);
-	dprintf(2, "after secu, map is\n%s\n", mlx.map);//debug
 	mlx.mlx_ptr = mlx_init();
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, (ft_column_size(map) * 32),
 			(ft_line_size(map) * 32), "so_long");

@@ -6,7 +6,7 @@
 #    By: hguillau <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 13:03:38 by hguillau          #+#    #+#              #
-#    Updated: 2022/08/19 16:25:24 by hguillau         ###   ########.fr        #
+#    Updated: 2022/08/20 15:29:12 by hguillau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ CC      	=		gcc
 
 RM      	=		rm -f
 
-CFLAGS  	=		-Wall -Wextra -Werror -Imlx -g -fsanitize=address
+CFLAGS  	=		-Wall -Wextra -Werror -Imlx #-g -fsanitize=address
 
 all:				LIBFT_M ${NAME}
 
